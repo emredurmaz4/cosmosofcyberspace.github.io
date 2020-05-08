@@ -11,66 +11,6 @@
     <div class="container">
 <header>
   <div class="menu">
-Soket programlama nedir?</br>
-Soket programlama, birbirleriyle iletişim kurmak için ağdaki iki düğümü bağlamanın bir yoludur.</br></br></br>
-Bir soket (düğüm) bir IP'deki belirli bir bağlantı noktasını dinlerken, diğer soket bir bağlantı oluşturmak için diğerine erişir.</br></br></br>
-
-
-Socket bağlantısını test etmek için basit bir script yazarak satır satır çalışma mantığını açıklayalım:</br>
-</br>
-"Bağlantı testi için server.py"</br>
-
-</br></br></br>
-#socket modülünü dahil ediyoruz</br>
-import socket </br></br>
-#server ip</br>
-host="192.168.1.31"  </br></br>
-#server port</br>
-port=20000&nbsp;</br></br>
-#s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br></br>
-s=socket.socket()    
-</br>
-</br></br>
-#Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br></br></br>
-def bagla():</br>
-&nbsp;&nbsp;&nbsp;&nbsp;try:</br>
-&nbsp;&nbsp;&nbsp;&nbsp;        s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
-&nbsp;&nbsp;&nbsp;&nbsp;        s.listen() #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse </br>
-                   #bunu kabuledebilir durumda olacağım bu yüzden listen() fonksiyonunu kullanıyorum ve bağlantıları dinliyorum.</br>
-                   
-
-
-#ve eğer herhangi bir hata çıkarsa bana baglantı hatasını bildirsin ve tekrar baglantı için bağlantı fonksiyonuna dallansın- </br>
-#yani burada recursive bir proses oluşturuyoruz.</br>
-&nbsp;&nbsp;&nbsp;&nbsp;    except:  </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        print("baglantı hatası")</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        bagla()</br>
-</br>
-#şimdi kabul_et diye bir fonksiyon yaratalım ve clientten gelen bağlantı isteklerini burada değerlendirelim.</br>
-def kabul_et():</br>
-    print("Baglantı bekleniyor")</br>
-    baglanti,adres=s.accept()</br>
-    #accept() fonksiyonu herhangi bir bağlantı isteği geldiğinde bana bir tuple(demet) objesi döndürüyor;bu tuple'ın ilk i benim</br>
-    #karşı tarafla olan bağlantımı temsil ediyor yani ben karşı tarafa herhangi bir veri yollayıp,veri alacağım zaman</br>
-    #bunu "baglanti" değişkeni üzerinden yapıyorum.</br>
-    #"adres"  değişkeni ise  tuple formatında ve client'ın ipsini ve client'in hangi portunda çıkış yaptığını yazıyor.</br>
-    print("Bağlantı gerçekleşti kurban ip:",adres[0],"kurban port:",adres[1])</br>
-    baglanti.close() # test amaçlı olduğu için bağlantı başarılı bir şekilde geldikten sonra bunu görelim ve kapatalım.</br>
-bagla()</br>
-kabul_et()</br>
-</br>
-</br>
-#########################################################################################################################################################</br>
-#########################################################################################################################################################</br>
-#########################################################################################################################################################</br>
-</br>
-</br>
-"Bağlantı testi için client.py"</br>
-</br>
-import socket </br>
-s=socket.socket()</br>
-s.connect(("192.168.1.31",20000))</br>
-s.close()</br>
-</br>
+j
   </div>
 </header>
