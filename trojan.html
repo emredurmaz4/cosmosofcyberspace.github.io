@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=2.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>[HTB] Networked Writeup</title>
   <link rel="stylesheet" type="text/css" href="/assets/main-dark.css">
 </head>
@@ -11,9 +11,9 @@
     <div class="container">
 <header>
   <div class="menu">
-    Soket programlama nedir?</br>
-Soket programlama, birbirleriyle iletişim kurmak için ağdaki iki düğümü bağlamanın bir yoludur.</br>
-Bir soket (düğüm) bir IP'deki belirli bir bağlantı noktasını dinlerken, diğer soket bir bağlantı oluşturmak için diğerine erişir.</br>
+Soket programlama nedir?</br>
+Soket programlama, birbirleriyle iletişim kurmak için ağdaki iki düğümü bağlamanın bir yoludur.</br></br></br>
+Bir soket (düğüm) bir IP'deki belirli bir bağlantı noktasını dinlerken, diğer soket bir bağlantı oluşturmak için diğerine erişir.</br></br></br>
 
 
 Socket bağlantısını test etmek için basit bir script yazarak satır satır çalışma mantığını açıklayalım:</br>
@@ -21,11 +21,11 @@ Socket bağlantısını test etmek için basit bir script yazarak satır satır 
 "Bağlantı testi için server.py"</br>
 
 </br></br></br>
-import socket #socket modülünü dahil ediyoruz bu dahili bir modül oldugu için kurmamıza gerek yok</br>
-host="192.168.1.31"  #server ip</br>
-port=20000           #server port</br>
-s=socket.socket()    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br>
-
+import socket #socket modülünü dahil ediyoruz bu dahili bir modül oldugu için kurmamıza gerek yok</br></br>
+host="192.168.1.31"  #server ip</br></br>
+port=20000           #server port</br></br>
+s=socket.socket()    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br></br>
+</br>
 </br></br>
 #Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br></br></br>
 def bagla():</br>
