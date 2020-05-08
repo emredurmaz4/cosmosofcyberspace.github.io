@@ -33,18 +33,18 @@ s=socket.socket()
 </br></br>
 #Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br></br></br>
 def bagla():</br>
-    try:</br>
-        s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
-        s.listen() #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse </br>
+&nbsp;&nbsp;&nbsp;&nbsp;try:</br>
+&nbsp;&nbsp;&nbsp;&nbsp;        s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;        s.listen() #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse </br>
                    #bunu kabuledebilir durumda olacağım bu yüzden listen() fonksiyonunu kullanıyorum ve bağlantıları dinliyorum.</br>
                    
 
 
 #ve eğer herhangi bir hata çıkarsa bana baglantı hatasını bildirsin ve tekrar baglantı için bağlantı fonksiyonuna dallansın- </br>
 #yani burada recursive bir proses oluşturuyoruz.</br>
-    except:  </br>
-        print("baglantı hatası")</br>
-        bagla()</br>
+&nbsp;&nbsp;&nbsp;&nbsp;    except:  </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        print("baglantı hatası")</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        bagla()</br>
 </br>
 #şimdi kabul_et diye bir fonksiyon yaratalım ve clientten gelen bağlantı isteklerini burada değerlendirelim.</br>
 def kabul_et():</br>
