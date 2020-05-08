@@ -26,48 +26,48 @@ Socket bağlantısını test etmek için basit bir script yazarak satır satır 
 </br></br>
 
 <span style="background:#8600b3">import socket</span>#socket modülünü dahil ediyoruz bu dahili bir modül oldugu için kurmamıza gerek yok</br>        
-host="192.168.1.31"  #server ip</br>
-port=20000           #server port</br>
-s=socket.socket()    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br>
+<span style="background:#8600b3">host="192.168.1.31"</span>  #server ip</br>
+<span style="background:#8600b3">port=20000</span>           #server port</br>
+<span style="background:#8600b3">s=socket.socket()</span>    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br>
 
 </br></br>
 #Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br>
-def bagla():</br>
-    try:</br>
-        s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
-        s.listen() #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse </br>
+<span style="background:#8600b3">def bagla():</span></br>
+<span style="background:#8600b3">    try:</span></br>
+<span style="background:#8600b3">        s.bind((host,port))</span> #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
+<span style="background:#8600b3">        s.listen()</span> #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse </br>
                    #bunu kabuledebilir durumda olacağım bu yüzden listen() fonksiyonunu kullanıyorum ve bağlantıları dinliyorum.</br>
                    
 
 </br></br></br></br>
 #ve eğer herhangi bir hata çıkarsa bana baglantı hatasını bildirsin ve tekrar baglantı için bağlantı fonksiyonuna dallansın- </br>
 #yani burada recursive bir proses oluşturuyoruz.</br>
-    except:  </br>
-        print("baglantı hatası")</br>
-        bagla()</br>
+<span style="background:#8600b3">    except:</span>  </br>
+<span style="background:#8600b3">        print("baglantı hatası")</span></br>
+<span style="background:#8600b3">        bagla()</span></br>
 </br></br></br>
 #şimdi kabul_et diye bir fonksiyon yaratalım ve clientten gelen bağlantı isteklerini burada değerlendirelim.</br>
-def kabul_et():</br>
-    print("Baglantı bekleniyor")</br>
-    baglanti,adres=s.accept()</br>
+<span style="background:#8600b3">def kabul_et():</span></br>
+<span style="background:#8600b3">    print("Baglantı bekleniyor")</span></br>
+<span style="background:#8600b3">    baglanti,adres=s.accept()</span></br>
     #accept() fonksiyonu herhangi bir bağlantı isteği geldiğinde bana bir tuple(demet) objesi döndürüyor;bu tuple'ın ilk i benim</br>
     #karşı tarafla olan bağlantımı temsil ediyor yani ben karşı tarafa herhangi bir veri yollayıp,veri alacağım zaman</br>
     #bunu "baglanti" değişkeni üzerinden yapıyorum.</br>
     #"adres"  değişkeni ise  tuple formatında ve client'ın ipsini ve client'in hangi portunda çıkış yaptığını yazıyor.</br>
-    print("Bağlantı gerçekleşti kurban ip:",adres[0],"kurban port:",adres[1])</br>
-    baglanti.close() # test amaçlı olduğu için bağlantı başarılı bir şekilde geldikten sonra bunu görelim ve kapatalım.</br>
-bagla()</br>
-kabul_et()</br></br></br></br>
+<span style="background:#8600b3">    print("Bağlantı gerçekleşti kurban ip:",adres[0],"kurban port:",adres[1])</span></br>
+<span style="background:#8600b3">    baglanti.close()</span> # test amaçlı olduğu için bağlantı başarılı bir şekilde geldikten sonra bunu görelim ve kapatalım.</br>
+<span style="background:#8600b3">bagla()</span></br>
+<span style="background:#8600b3">kabul_et()</span></br></br></br></br>
 #########################################################################################################################################################</br>
 #########################################################################################################################################################</br>
 #########################################################################################################################################################</br>
 </br></br></br>
 #"Bağlantı testi için client.py"</br></br>
 
-import socket </br>
-s=socket.socket()</br>
-s.connect(("192.168.1.31",20000))</br>
-s.close()</br>
+<span style="background:#8600b3">import socket</span> </br>
+<span style="background:#8600b3">s=socket.socket()</span></br>
+<span style="background:#8600b3">s.connect(("192.168.1.31",20000))</span></br>
+<span style="background:#8600b3">s.close()</span></br>
 
   
 <p style="color:MediumSeaGreen;">Kaynak kod:<a href="https://github.com/nuriyavuz/PythonSocketTest">https://github.com/nuriyavuz/PythonSocketTest</a></p>
