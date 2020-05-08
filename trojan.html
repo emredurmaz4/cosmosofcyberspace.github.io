@@ -20,14 +20,14 @@ Socket bağlantısını test etmek için basit bir script yazarak satır satır 
 </br>
 "Bağlantı testi için server.py"</br>
 
-
+</br></br></br>
 import socket #socket modülünü dahil ediyoruz bu dahili bir modül oldugu için kurmamıza gerek yok</br>
 host="192.168.1.31"  #server ip</br>
 port=20000           #server port</br>
 s=socket.socket()    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum</br>
 
-
-#Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br>
+</br></br>
+#Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.</br></br></br>
 def bagla():</br>
     try:</br>
         s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.</br>
