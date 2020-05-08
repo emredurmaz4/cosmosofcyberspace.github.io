@@ -11,6 +11,59 @@
     <div class="container">
 <header>
   <div class="menu">
-deneme deneme deneme
+Soket programlama nedir?
+Soket programlama, birbirleriyle iletişim kurmak için ağdaki iki düğümü bağlamanın bir yoludur. 
+Bir soket (düğüm) bir IP'deki belirli bir bağlantı noktasını dinlerken, diğer soket bir bağlantı oluşturmak için diğerine erişir.
+
+
+Socket bağlantısını test etmek için basit bir script yazarak satır satır çalışma mantığını açıklayalım:
+
+"Bağlantı testi için server.py"
+
+
+import socket #socket modülünü dahil ediyoruz bu dahili bir modül oldugu için kurmamıza gerek yok
+host="192.168.1.31"  #server ip
+port=20000           #server port
+s=socket.socket()    #s değişkeni oluşturuyorum ve buna soket modulünün socket classından bir obje atıyorum
+
+
+#Şimdi oluşturduğumuz socketi server bilgisayara bağlamak istiyorum ve bağla adında bir fonksiyon oluşturuyorum.
+def bagla():
+    try:
+        s.bind((host,port)) #Bu aşamada yukarıda oluşturduğumuz socketi(soketi bir kablo olarak düşünebilirsiniz) server bilgisayara bağlıyoruz.
+        s.listen() #socketi(kabloyu) server bilgisayara bağladıktan sonra bu bağlantıları dinlemeye alacağım yani herhangi bir bağlantı isteği gelirse 
+                   #bunu kabuledebilir durumda olacağım bu yüzden listen() fonksiyonunu kullanıyorum ve bağlantıları dinliyorum.
+                   
+
+
+#ve eğer herhangi bir hata çıkarsa bana baglantı hatasını bildirsin ve tekrar baglantı için bağlantı fonksiyonuna dallansın- 
+#yani burada recursive bir proses oluşturuyoruz.
+    except:  
+        print("baglantı hatası")
+        bagla()
+
+#şimdi kabul_et diye bir fonksiyon yaratalım ve clientten gelen bağlantı isteklerini burada değerlendirelim.
+def kabul_et():
+    print("Baglantı bekleniyor")
+    baglanti,adres=s.accept()
+    #accept() fonksiyonu herhangi bir bağlantı isteği geldiğinde bana bir tuple(demet) objesi döndürüyor;bu tuple'ın ilk i benim
+    #karşı tarafla olan bağlantımı temsil ediyor yani ben karşı tarafa herhangi bir veri yollayıp,veri alacağım zaman
+    #bunu "baglanti" değişkeni üzerinden yapıyorum.
+    #"adres"  değişkeni ise  tuple formatında ve client'ın ipsini ve client'in hangi portunda çıkış yaptığını yazıyor.
+    print("Bağlantı gerçekleşti kurban ip:",adres[0],"kurban port:",adres[1])
+    baglanti.close() # test amaçlı olduğu için bağlantı başarılı bir şekilde geldikten sonra bunu görelim ve kapatalım.
+bagla()
+kabul_et()
+#########################################################################################################################################################
+#########################################################################################################################################################
+#########################################################################################################################################################
+
+"Bağlantı testi için client.py"
+
+import socket 
+s=socket.socket()
+s.connect(("192.168.1.31",20000))
+s.close()
+
   </div>
 </header>
