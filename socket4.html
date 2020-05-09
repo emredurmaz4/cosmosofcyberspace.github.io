@@ -101,7 +101,7 @@ Gelen veriyi işlemek ve cmd komutlarını çalıştırmak   server.py  ##</br>
             #stdout ve stderr ı okuyup server a yollamamız lazım</br>
 <span style="background:#8600b3">            output=cmd.stdout.read() + cmd.stderr.read()</span></br>
             #output ı string e dönüştürelim</br>
-<span style="background:#8600b3">            output_str=str(output,encoding="cp857")  #####------------------------------------------------>>>>> utf-8 değil cp857 yapılacak nokta</br>
+<span style="background:#8600b3">            output_str=str(output,encoding="cp857")</span>  #####------------------------------------------------>>>>> utf-8 değil cp857 yapılacak nokta</br>
             #her komutu çalıştırdıktan sonra karşı tarafa bulunduğumuz dizini yollamak istiyorum</br>
 <span style="background:#8600b3">            konum=os.getcwd()</span> #string formatında olduğumuz dizini veriyor</br>
             #Ben bu ikisini yani "output" ve "konum"  u birleştirip server a yollamak istiyorum</br>
